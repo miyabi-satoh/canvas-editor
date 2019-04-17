@@ -51,10 +51,10 @@ module.exports = {
    */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios',
+    // '@nuxtjs/axios',
     // Doc: https://buefy.github.io/#/documentation
     ['nuxt-buefy', { css: false }],
-    '@nuxtjs/pwa'
+    // '@nuxtjs/pwa'
   ],
   /*
    ** Axios module configuration

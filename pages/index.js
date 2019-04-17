@@ -242,6 +242,12 @@ export default {
     }
   },
   watch: {
+    canvasWidth(newVal) {
+      this.updateCanvas()
+    },
+    canvasHeight(newVal) {
+      this.updateCanvas()
+    },
     layers: {
       deep: true,
       handler: function(to, from) {
@@ -284,8 +290,8 @@ export default {
       const ratioX = this.canvasWidth / layer.image.naturalWidth
       const ratioY = this.canvasHeight / layer.image.naturalHeight
       const ratio = Math.min(ratioX, ratioY)
-      layer.width = layer.image.naturalWidth * ratio
-      layer.height = layer.image.naturalHeight * ratio
+      layer.width = Math.floor(layer.image.naturalWidth * ratio)
+      layer.height = Math.floor(layer.image.naturalHeight * ratio)
       layer.size = Size.createDefault(layer.size)
       this.updateCanvas()
     },

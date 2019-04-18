@@ -345,26 +345,32 @@ export default {
     onClickLeft() {
       this.currentLayer.x = 0
       this.currentLayer.font.align = 'left'
+      this.currentLayer.font = Font.createDefault(this.currentLayer.font)
     },
     onClickCenter() {
       this.currentLayer.x = (this.canvasWidth - this.currentLayer.width) / 2
       this.currentLayer.font.align = 'center'
+      this.currentLayer.font = Font.createDefault(this.currentLayer.font)
     },
     onClickRight() {
       this.currentLayer.x = this.canvasWidth - this.currentLayer.width
       this.currentLayer.font.align = 'right'
+      this.currentLayer.font = Font.createDefault(this.currentLayer.font)
     },
     onClickTop() {
       this.currentLayer.y = 0
       this.currentLayer.font.baseline = 'top'
+      this.currentLayer.font = Font.createDefault(this.currentLayer.font)
     },
     onClickMiddle() {
       this.currentLayer.y = (this.canvasHeight - this.currentLayer.height) / 2
       this.currentLayer.font.baseline = 'middle'
+      this.currentLayer.font = Font.createDefault(this.currentLayer.font)
     },
     onClickBottom() {
       this.currentLayer.y = this.canvasHeight - this.currentLayer.height
       this.currentLayer.font.baseline = 'bottom'
+      this.currentLayer.font = Font.createDefault(this.currentLayer.font)
     },
     updateCanvas() {
       if (this.updateTimer) {

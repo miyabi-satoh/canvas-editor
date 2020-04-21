@@ -224,7 +224,12 @@ function _fontData(data) {
 
 export default {
   name: 'Font',
-  props: ['value'],
+  props: {
+    value: {
+      type: Object,
+      required: true
+    }
+  },
   data() {
     return {
       val: _fontData(this.value)

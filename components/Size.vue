@@ -79,7 +79,20 @@ function _sizeData(data, maxWidth, maxHeight) {
 
 export default {
   name: 'Size',
-  props: ['value', 'maxWidth', 'maxHeight'],
+  props: {
+    value: {
+      type: Object,
+      required: true
+    },
+    maxWidth: {
+      type: Number,
+      required: true
+    },
+    maxHeight: {
+      type: Number,
+      required: true
+    }
+  },
   data() {
     return {
       val: _sizeData(this.value, this.maxWidth, this.maxHeight)

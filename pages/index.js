@@ -41,6 +41,7 @@ class Shadow {
     this.isEnable = false
   }
 }
+
 class Layer {
   constructor(id, src = null) {
     this.id = id
@@ -69,30 +70,39 @@ class Layer {
       this.text = ''
     }
   }
+
   get isRect() {
     return this.type === 0
   }
+
   get isCircle() {
     return this.type === 1
   }
+
   get isImage() {
     return this.type === 2
   }
+
   get isText() {
     return this.type === 3
   }
+
   get width() {
     return this.isText ? 0 : this.size.width
   }
+
   set width(val) {
     this.size.width = val
   }
+
   get height() {
     return this.isText ? 0 : this.size.height
   }
+
   set height(val) {
     this.size.height = val
   }
+
   get icon() {
     if (this.isCircle) {
       return this.border.width > 0 ? 'circle-outline' : 'circle'
@@ -105,6 +115,7 @@ class Layer {
     }
     return this.border.width > 0 ? 'square-outline' : 'square'
   }
+
   get style() {
     if (this.isImage) {
       return {}
@@ -123,12 +134,15 @@ class Layer {
     }
     return { color: Color2CSS(this.color) }
   }
+
   static get TypeNames() {
     return ['矩形', '円・楕円', '画像', 'テキスト']
   }
+
   get typeName() {
     return Layer.TypeNames[this.type]
   }
+
   get typeIcon() {
     if (this.isCircle) {
       return 'circle'
@@ -141,6 +155,7 @@ class Layer {
     }
     return 'square'
   }
+
   render(context) {
     context.lineWidth = this.border.width
     context.strokeStyle = Color2CSS(this.border.color)
@@ -152,7 +167,7 @@ class Layer {
       context.shadowOffsetY = this.shadow.y
     }
     switch (this.type) {
-      case 1:
+      case 1: {
         const radius = (this.width - this.border.width) / 2
         const radiusY = (this.height - this.border.width) / 2
         const centerX = this.x + radius + this.border.width / 2
@@ -165,6 +180,7 @@ class Layer {
           context.stroke()
         }
         break
+      }
       case 2:
         if (this.image.src) {
           context.drawImage(this.image, this.x, this.y, this.width, this.height)

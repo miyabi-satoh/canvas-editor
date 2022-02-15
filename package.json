@@ -19,7 +19,7 @@
     "babel-core": "7.0.0-bridge.0",
     "cross-env": "^7.0.2",
     "express": "^4.17.1",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "nuxt": "^2.12.2",
     "nuxt-buefy": "^0.3.26",
     "pug": "^3.0.1",

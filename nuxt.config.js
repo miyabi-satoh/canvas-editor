@@ -1,7 +1,8 @@
 const pkg = require('./package')
 
 module.exports = {
-  mode: 'universal',
+  // mode: 'universal',
+  ssr: true,
 
   server: {
     host: '0.0.0.0'
@@ -70,16 +71,20 @@ module.exports = {
     /*
      ** You can extend webpack config here
      */
-    extend(config, ctx) {
-      // Run ESLint on save
-      if (ctx.isDev && ctx.isClient) {
-        config.module.rules.push({
-          enforce: 'pre',
-          test: /\.(js|vue)$/,
-          loader: 'eslint-loader',
-          exclude: /(node_modules)/
-        })
-      }
-    }
-  }
+    // extend(config, ctx) {
+    //   // Run ESLint on save
+    //   if (ctx.isDev && ctx.isClient) {
+    //     config.module.rules.push({
+    //       enforce: 'pre',
+    //       test: /\.(js|vue)$/,
+    //       loader: 'eslint-loader',
+    //       exclude: /(node_modules)/
+    //     })
+    //   }
+    // }
+  },
+
+  buildModules: [
+    '@nuxtjs/eslint-module'
+  ]
 }

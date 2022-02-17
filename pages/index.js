@@ -129,7 +129,7 @@ class Layer {
     if (this.border.width > 0) {
       return {
         color: Color2CSS(this.border.color),
-        backgroundColor: Color2CSS(this.color)
+        backgroundColor: Color2CSS(this.color),
       }
     }
     return { color: Color2CSS(this.color) }
@@ -230,7 +230,7 @@ export default {
     Sketch,
     Dragable,
     Font,
-    Size
+    Size,
   },
   data() {
     return {
@@ -243,7 +243,7 @@ export default {
       blobUrl: null,
       uploadedFile: null,
       linkElements: [],
-      updateTimer: null
+      updateTimer: null,
     }
   },
   computed: {
@@ -255,7 +255,7 @@ export default {
         return this.layers[this.indexLayers]
       }
       return null
-    }
+    },
   },
   watch: {
     canvasWidth(newVal) {
@@ -266,18 +266,18 @@ export default {
     },
     layers: {
       deep: true,
-      handler: function(to, from) {
+      handler(to, from) {
         this.updateCanvas()
-      }
+      },
     },
     uploadedFile(to, from) {
       const reader = new FileReader()
-      reader.onload = e => {
+      reader.onload = (e) => {
         this.currentLayer.image.src = this.currentLayer.imageSrc =
           e.target.result
       }
       reader.readAsDataURL(to)
-    }
+    },
   },
   mounted() {
     this.updateCanvas()
@@ -397,15 +397,15 @@ export default {
       this.updateTimer = setTimeout(() => {
         // 使用するWebフォントを列挙する
         const usingFonts = []
-        this.layers.forEach(layer => {
+        this.layers.forEach((layer) => {
           if (layer.isText && layer.font && layer.font.face.href) {
             usingFonts.push(layer.font.face.href)
           }
         })
         // 使うものを残し、使わないものを削除する
         const newLinkElements = []
-        this.linkElements.forEach(e => {
-          const isFound = usingFonts.find(href => {
+        this.linkElements.forEach((e) => {
+          const isFound = usingFonts.find((href) => {
             return href === e.href
           })
           if (isFound) {
@@ -416,8 +416,8 @@ export default {
           }
         })
         // 追加されたものをロードする
-        usingFonts.forEach(href => {
-          const isFound = newLinkElements.find(e => {
+        usingFonts.forEach((href) => {
+          const isFound = newLinkElements.find((e) => {
             return e.href === href
           })
           if (!isFound) {
@@ -434,7 +434,7 @@ export default {
         const cv = document.getElementById('canvas')
         const ctx = cv.getContext('2d')
         ctx.clearRect(0, 0, cv.width, cv.height)
-        this.layers.forEach(layer => {
+        this.layers.forEach((layer) => {
           ctx.save()
           layer.render(ctx)
           ctx.restore()
@@ -445,8 +445,8 @@ export default {
     },
     Base64toBlob(base64) {
       const b64 = atob(base64.split(',')[1])
-      const u8 = Uint8Array.from(b64.split(''), e => e.charCodeAt())
+      const u8 = Uint8Array.from(b64.split(''), (e) => e.charCodeAt())
       return new Blob([u8], { type: 'image/png' })
-    }
-  }
+    },
+  },
 }

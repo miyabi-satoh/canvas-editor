@@ -19,7 +19,7 @@ export default {
         year = '2019 - ' + year
       }
       return year
-    }
-  }
+    },
+  },
 }
 </script>

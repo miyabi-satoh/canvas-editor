@@ -69,11 +69,11 @@ function _sizeData(data, maxWidth, maxHeight) {
   }
 
   return {
-    width: width,
-    srcWidth: srcWidth,
-    height: height,
-    srcHeight: srcHeight,
-    ratio: ratio
+    width,
+    srcWidth,
+    height,
+    srcHeight,
+    ratio,
   }
 }
 
@@ -82,20 +82,20 @@ export default {
   props: {
     value: {
       type: Object,
-      required: true
+      required: true,
     },
     maxWidth: {
       type: Number,
-      required: true
+      required: true,
     },
     maxHeight: {
       type: Number,
-      required: true
-    }
+      required: true,
+    },
   },
   data() {
     return {
-      val: _sizeData(this.value, this.maxWidth, this.maxHeight)
+      val: _sizeData(this.value, this.maxWidth, this.maxHeight),
     }
   },
   computed: {
@@ -109,7 +109,7 @@ export default {
           this.val.height = Math.floor(newVal / this.val.ratio)
         }
         this.$emit('input', this.val)
-      }
+      },
     },
     sizeHeight: {
       get() {
@@ -121,13 +121,13 @@ export default {
           this.val.width = Math.floor(newVal * this.val.ratio)
         }
         this.$emit('input', this.val)
-      }
-    }
+      },
+    },
   },
   watch: {
     value(newVal) {
       this.val = _sizeData(newVal, this.maxWidth, this.maxHeight)
-    }
+    },
   },
   methods: {
     toggleRatio() {
@@ -162,10 +162,10 @@ export default {
         this.val.ratio = this.val.width / this.val.height
       }
       this.$emit('input', this.val)
-    }
+    },
   },
   createDefault(src = null) {
     return _sizeData(src)
-  }
+  },
 }
 </script>
